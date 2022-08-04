@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Aja-Edward/Redux-movie-List/static/css/main.f8228a91.css",
+    "main.js": "/Aja-Edward/Redux-movie-List/static/js/main.ad735789.js",
+    "static/js/787.6e00d198.chunk.js": "/Aja-Edward/Redux-movie-List/static/js/787.6e00d198.chunk.js",
+    "index.html": "/Aja-Edward/Redux-movie-List/index.html",
+    "main.f8228a91.css.map": "/Aja-Edward/Redux-movie-List/static/css/main.f8228a91.css.map",
+    "main.ad735789.js.map": "/Aja-Edward/Redux-movie-List/static/js/main.ad735789.js.map",
+    "787.6e00d198.chunk.js.map": "/Aja-Edward/Redux-movie-List/static/js/787.6e00d198.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f8228a91.css",
+    "static/js/main.ad735789.js"
+  ]
+}
