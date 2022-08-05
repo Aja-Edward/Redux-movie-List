@@ -1,43 +1,42 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { fetchMovie, setLoading } from '../../actions/searchActions'
 
-
-export class Movie extends Component {
-
-    onComponentDidMount() {
-        this.props.fetchMovie(this.props.match.params.id)
+class Movie extends Component {
+    componentDidMount() {
+        this.props.fetchMovie(this.props.params.id)
         this.props.setLoading();
     }
     render() {
+      let movie = this.props?.movie
         return (
             <React.Fragment>
                 <div className="movie--container">
                     <div className="card--body">
-                        <img src="" alt="" className="thumbnail" />
+                        <img src={movie?.Poster} alt={movie?.Title} className="thumbnail" />
                     </div>
                     <div className="movie--info">
-                        <h2 className="movie--title">Movie Title</h2>
+                        <h2 className="movie--title">{movie?.Title}</h2>
                         <ul className="list-group">
                             <li className="list-group-item">
-                                <strong>Genre:</strong> Movie Genre
+                                <strong>Genre:</strong> {movie?.Genre}
                             </li>
                             <li className="list-group-item">
-                                <strong>Released:</strong> Movie Released
+                                <strong>Released:</strong>{movie?.Released}
                             </li>
                             <li className="list-group-item">
-                                <strong>Writer:</strong> Movie Writer
+                                <strong>Writer:</strong> {movie?.Writer}
                             </li>
                             <li className="list-group-item">
-                                <strong>Rated:</strong> Movie Rated
+                                <strong>Rated:</strong> {movie?.Rated}
                             </li>
                             <li className="list-group-item">
-                                <strong>IMDB Rating:</strong> Movie IMDB Rating
+                                <strong>IMDB Rating:</strong> {movie?.imdbRating}
                             </li>
                             <li className="list-group-item">
-                                <strong>Actors:</strong> Movie Actors
+                                <strong>Actors:</strong> {movie?.Actors}
                             </li>
                         </ul>
                     </div>
@@ -67,4 +66,13 @@ const mapStateToProps = state => ({
     movie: state.movies.movie
 })
 
-export default connect(mapStateToProps, { setLoading, fetchMovie })(Movie)
+//You are using React router v6. which doesnt support certain functionalities in class-based components. 
+//To get the params, I'll use a Higher Order Function (HOC) to make the params accessible
+const WithRouter = (Child) => {
+    return function WithRouter (props) {
+         const params = useParams()
+         return <Child {...props} params ={params} />;
+   }
+}
+
+export default connect(mapStateToProps, { setLoading, fetchMovie })(WithRouter(Movie))
