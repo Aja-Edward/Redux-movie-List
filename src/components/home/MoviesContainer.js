@@ -8,9 +8,9 @@ export class MoviesContainer extends Component {
     render() {
         const { movies } = this.props;
         let content = '';
-
-        content = movies.length > 0 ? movies.map((movie, index) => <MovieCard key=
+        content = movies?.length > 0 ? movies.map((movie, index) => <MovieCard key=
             {index} movie={movie} />) : movies;
+            
         return (
             <div className='movie--rows'>
                 {content}

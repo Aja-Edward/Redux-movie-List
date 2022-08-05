@@ -5,12 +5,10 @@ import './Spinner.css'
 const Spinner = () => {
     return (
         <div>
-
             <img className="spinner--image"
                 src={spinner}
                 alt="Loading..."
             />
-
         </div>
     )
 }

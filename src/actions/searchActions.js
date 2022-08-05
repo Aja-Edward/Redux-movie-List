@@ -21,7 +21,8 @@ export const fetchMovies = text => dispatch => {
 };
 
 export const fetchMovie = id => dispatch => {
-    axios.get(`http://www.img.omdbapi.com/?apikey=${APIKey}&i=${id}`)
+   
+    axios.get(`http://www.omdbapi.com/?apikey=${APIKey}&i=${id}`)
         .then(response =>
             dispatch({
                 type: FETCH_MOVIE,

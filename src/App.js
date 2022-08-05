@@ -1,11 +1,13 @@
 import React from 'react'
 import { Provider } from 'react-redux';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
-import Landingpage from './components/home/LandingPage';
-import Movie from './components/home/Movie';
+import LandingPage from './components/home/LandingPage';
+import LandingPageFunctional from './components/home/LandingPageFunctional';
+import Movie from './components/home/Movie'; //this uses class component
+import MovieFunctional from './components/home/MovieFunctional'; //this uses functional component
 import store from './store';
 
 
@@ -18,8 +20,14 @@ const App = () => {
         <Navbar />
         <Routes>
           <React.Fragment>
-            <Route path='/' element={<Landingpage />} />
-            <Route path='/movie/:Id/' element={<Movie />} />
+            {/* this uses class-based component, the other uses functional. You can comment out one and use the other */}
+            {/* <Route path='/' element={<LandingPage />} /> */}
+            <Route path='/' element={<LandingPageFunctional />} />
+            
+            {/* this uses class-based component, the other uses functional. You can comment out one and use the other */}
+            {/* <Route exact path='movie/:id' element={<Movie />} /> */} 
+            <Route path='/movie/:id' element={<MovieFunctional />} />
+
           </React.Fragment>
         </Routes>
         <Footer />
